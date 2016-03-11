@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/html" href="css/main.css">
+    <meta charset="utf-8">
+    <script src="js/moduleInsurance.js"></script>
+    <script src="js/insurancePolicy.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/viewTableInfo.js"></script>
+    <title>DOM-BOM</title>
+</head>
+<body>
+<section>
+    <form>
+        <fieldset>
+            <legend>Введите информацию:</legend>
+            Вид страхования:
+            <select id="type_insurance" onchange=validation()>
+                <option value="КАСКО" selection="selected">КАСКО</option>
+                <option value="ОСАГО">ОСАГО</option>
+                <option value="ДАГО">ДАГО</option>
+            </select>
+            <br>
+            Номер полиса:
+            <input type="text" id="number_policy"
+                   pattern="^[0][0-4][0-9][aA][tT][-][0-2][0-9][/][0-9]{5}$" required value="">
+            <br>
+            Страхователь (ФИО):
+            <input type="text" id="name" required value="">
+            <br>
+            Дата продажи:
+            <input type="date" id="date_sale">
+            <br/>
+            Страховая премия:
+            <input type="text" id="premium" pattern="^[ 0-9]+$" required value="0">
+            <br/>
+            Скидка:
+            <input type="text" id="reduction" pattern="^[ 0-9]+$" required value="0">
+            <br/>
+            <input type="submit" value="Зарегистрировать данный страховой полис" onclick="registerPolicy()">
+        </fieldset>
+    </form>
+    <table>
+        <caption>Информация о существующих страховых полисах</caption>
+        <thead>
+        <tr>
+            <th> №</th>
+            <th> Вид полиса</th>
+            <th> Номер</th>
+            <th> Страхователь (ФИО)</th>
+            <th>Дата продажи</th>
+            <th>Страховая премия</th>
+            <th>Скидка</th>
+        </tr>
+        <tbody>
+        <script>fillTable();</script>
+        </tbody>
+    </table>
+    <br/>
+    <button type="button" id = "delAll" onclick="deleteAllInformation()">Удалить все данные из таблицы</button>
+    <button type="button" id = "delItem" onclick="deleteItem();">Удалить запись из таблицы...</button>
+</section>
+</body>
+</html>
